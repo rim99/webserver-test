@@ -42,16 +42,14 @@ def analysis_data():
           \nAvg request lapse: %f"\
           % (max, min, average))
 
-
 def main(max_jobs, thread_num, url, timeout):
     count = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=thread_num) as pool:
-        while True:
-            if count == max_jobs:
-                break
+        while count != max_jobs:
             thread_r = pool.submit(try_url, url, timeout)
             count += 1
     analysis_data()
+
 
 if __name__ == '__main__':
     parse = argparse.ArgumentParser(description='Argument parser')
