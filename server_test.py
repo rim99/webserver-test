@@ -55,17 +55,16 @@ def main(max_jobs, thread_num, url, timeout):
     finally:
         analysis_data()
 
-
 if __name__ == '__main__':
     parse = argparse.ArgumentParser(description='Argument parser')
     parse.add_argument('-n', '--thread_num', help='The max number of workers in threads pool',
-                       type=int)
+                       type=int, default=200)
     parse.add_argument('-u', '--url', help='The url of target for testing',
                        type=str)
     parse.add_argument('-t', '--timeout', help='The timeout-request will be treated as a failure',
-                       type=int)
+                       type=int, default=999)
     parse.add_argument('-m', '--max_jobs', help="The maximum of request jobs",
-                       type=int)
+                       type=int, default=1000)
     args = parse.parse_args()
     main(args.max_jobs, args.thread_num, args.url, args.timeout)
 
