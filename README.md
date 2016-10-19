@@ -1,6 +1,6 @@
 # Web Server Test
 
-This script can be used to test the web server's performance, when dealing with massive concurrent request.
+This script can be used to test the web server's performance when dealing with massive concurrent requests.
 
 Execute command
 
