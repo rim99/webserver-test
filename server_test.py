@@ -43,12 +43,17 @@ def analysis_data():
           % (max, min, average))
 
 def main(max_jobs, thread_num, url, timeout):
+    print('Running')
     count = 0
-    with concurrent.futures.ThreadPoolExecutor(max_workers=thread_num) as pool:
-        while count != max_jobs:
-            thread_r = pool.submit(try_url, url, timeout)
-            count += 1
-    analysis_data()
+    try:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=thread_num) as pool:
+            while count != max_jobs:
+                thread_r = pool.submit(try_url, url, timeout)
+                count += 1
+    except Exception as msg:
+        print(msg)
+    finally:
+        analysis_data()
 
 
 if __name__ == '__main__':
